@@ -1,6 +1,6 @@
 export default interface Languages {
-  iso639_1: string;
-  iso639_2: string;
-  name: string;
-  nativeName: string;
+  iso639_1?: string;
+  iso639_2?: string;
+  name?: string;
+  nativeName?: string;
 }

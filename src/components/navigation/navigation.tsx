@@ -16,17 +16,27 @@ export default function Navigation() {
       <div className="nav__logo">
         <h1> Where in the world?</h1>
       </div>
-      <div className="nav__button">
-        {!dark ? <img src={sun} alt="sun" /> : <img src={moon} alt="moon" />}
-        <button
-          type="button"
-          onClick={toggle}
-          style={{
-            color: theme.color,
-          }}>
-          {!dark ? "Dark Mode" : "Light Mode"}
-        </button>
-      </div>
+      <button
+        className="nav__button"
+        type="button"
+        onClick={toggle}
+        style={{
+          color: theme.color,
+        }}>
+        {!dark ? (
+          <img src={moon} alt="moon" />
+        ) : (
+          <img
+            src={sun}
+            style={{
+              filter: "invert(100%) sepia(10%) saturate(298%) hue-rotate(150deg) brightness(114%) contrast(100%)",
+            }}
+            alt="sun"
+          />
+        )}
+
+        {!dark ? "Dark Mode" : "Light Mode"}
+      </button>
     </nav>
   );
 }

@@ -18,17 +18,19 @@ nav {
   align-items: center;
   justify-content: flex-end;
   font-size: 1rem;
-}
-.nav__button img {
-  height: auto;
-  width: 1em;
-}
-.nav__button button {
   outline: none;
   background: none;
   border: none;
 
+  img {
+    padding-right: 0.5em;
+  }
+
   &:hover {
     cursor: pointer;
   }
+}
+.nav__button img {
+  height: auto;
+  width: 1em;
 }
