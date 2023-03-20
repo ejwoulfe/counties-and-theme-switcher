@@ -1,0 +1,11 @@
+@import "../../util/variables";
+
+.countries__filters {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: $very-light-gray;
+  height: 100vh;
+  padding: 3em;
+}
