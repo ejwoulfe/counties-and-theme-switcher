@@ -5,12 +5,12 @@
   flex-flow: row nowrap;
   justify-content: flex-start;
   align-items: center;
-  margin-left: 4em;
-  padding: 0.75em;
+  margin-left: 3%;
   background-color: white;
   border-radius: 2px;
   box-shadow: 0px 0px 5px -2px gray;
   width: 450px;
+  height: 55px;
 
   img {
     height: auto;
@@ -20,6 +20,7 @@
   .search__inputBar {
     height: 2em;
     border: none;
+    width: 100%;
 
     &:focus {
       outline: none;

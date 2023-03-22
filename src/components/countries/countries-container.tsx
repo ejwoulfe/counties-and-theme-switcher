@@ -10,17 +10,32 @@ import "./countries-container.scss";
 export default function CountriesContainer() {
   const [countriesList] = useState<Array<Country>>(countries);
   const [filteredList, setFilteredList] = useState<Array<Country>>([]);
-  const [keyword, setKeyword] = useState<string | null>(null);
+  const [keyword, setKeyword] = useState<string>("");
   const [regionFilter, setRegionFilter] = useState<string | null>(null);
   const [selectedCountry, setSelectedCountry] = useState<Country | null>(null);
 
   useEffect(() => {
-    applyFilters("", regionFilter);
-  }, [regionFilter, keyword]);
+    function applyFilters(keyword: string, region: string | null) {
+      // Create a separate array that will only apply a filter based on region from the original country list.
+      // This is so if a user wants to filter via search term and types in a string then deletes it, we can reference back to the regionFilteredList which will be the original list plus the region filter.
+      let regionFilteredList = [...countriesList];
+      if (region !== null) {
+        regionFilteredList = countriesList.filter((country) => country.region === region);
+        setFilteredList(regionFilteredList);
+      } else {
+        setFilteredList(regionFilteredList);
+      }
 
-  function applyFilters(keyword: string, region: string | null) {
-    console.log(region);
-  }
+      if (keyword.length > 0) {
+        setFilteredList(
+          regionFilteredList.filter((country) => country.name.toLowerCase().includes(keyword.toLowerCase()))
+        );
+      } else if (keyword.length === 0) {
+        setFilteredList(regionFilteredList);
+      }
+    }
+    applyFilters(keyword, regionFilter);
+  }, [regionFilter, keyword, countriesList]);
 
   return (
     <section className="countries-container">
@@ -29,7 +44,7 @@ export default function CountriesContainer() {
         <Filter filter={{ setRegionFilter }} />
       </div>
 
-      {selectedCountry !== null ? <CountriesList /> : <CountryDetails />}
+      {selectedCountry === null ? <CountriesList countryList={{ filteredList }} /> : <CountryDetails />}
     </section>
   );
 }
