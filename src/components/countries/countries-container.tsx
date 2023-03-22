@@ -16,8 +16,9 @@ export default function CountriesContainer() {
 
   useEffect(() => {
     function applyFilters(keyword: string, region: string | null) {
-      // Create a separate array that will only apply a filter based on region from the original country list.
-      // This is so if a user wants to filter via search term and types in a string then deletes it, we can reference back to the regionFilteredList which will be the original list plus the region filter.
+      /*
+       * Firstly, I created a new array that will filter the original countries list by region, then if a user enters a keyword it will filter the * regionFiltered array and apply that to the filteredArray held in state. This is so if a user searches via keyword and then deletes their * keyword, the region filtered array will remain unaffected by the keyword and we can just reference back to that instead of checking every * parameter.
+       */
       let regionFilteredList = [...countriesList];
       if (region !== null) {
         regionFilteredList = countriesList.filter((country) => country.region === region);

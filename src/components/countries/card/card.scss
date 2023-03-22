@@ -1,0 +1,16 @@
+.country__card {
+  flex: 15% 1 1;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 1em 3em;
+}
+.country__flag {
+  height: 150px;
+  width: 100%;
+
+  img {
+    width: 100%;
+  }
+}

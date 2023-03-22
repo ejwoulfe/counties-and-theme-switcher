@@ -1,0 +1,9 @@
+@import "../../../util/variables";
+
+.countries-list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: $very-light-gray;
+}
